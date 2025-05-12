@@ -25,12 +25,13 @@ Respond to user interactions.
 
 Happy Coding! 💻✨
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Page</title>
+    <title>Interactive Web Page</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -38,85 +39,66 @@ Happy Coding! 💻✨
         <h1>Welcome to My Interactive Page</h1>
     </header>
 
-    <section id="content">
-        <p>This is some static text.</p>
-        <p id="dynamic-text">This text will change when you click the button.</p>
-    </section>
+    <main>
+        <section>
+            <p id="dynamicText">This text will change when you click the button below.</p>
+            <button id="changeTextButton">Change Text</button>
+        </section>
 
-    <button id="change-text-btn">Change Text and Style</button>
-    <button id="add-remove-element-btn">Add/Remove Element</button>
+        <section>
+            <button id="toggleColorButton">Toggle Background Color</button>
+        </section>
+
+        <section>
+            <button id="addElementButton">Add New Element</button>
+            <div id="dynamicContainer"></div>
+        </section>
+    </main>
 
     <footer>
-        <p>&copy; 2025 My Interactive Website</p>
+        <p>&copy; 2025 My Interactive Page</p>
     </footer>
 
     <script src="script.js"></script>
 </body>
 </html>
 
+// 1. Changing text content dynamically
+const changeTextButton = document.getElementById("changeTextButton");
+const dynamicText = document.getElementById("dynamicText");
 
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f9;
-}
-
-header {
-    background-color: #4CAF50;
-    color: white;
-    text-align: center;
-    padding: 20px;
-}
-
-footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 10px;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-}
-
-button {
-    margin: 10px;
-    padding: 10px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #45a049;
-}
-
-// Change the text content dynamically
-const changeTextButton = document.getElementById('change-text-btn');
-const dynamicText = document.getElementById('dynamic-text');
-
-changeTextButton.addEventListener('click', function() {
-    dynamicText.textContent = "The text has been changed!";
-    dynamicText.style.color = 'blue'; // Modifying CSS style dynamically
-    dynamicText.style.fontWeight = 'bold';
+changeTextButton.addEventListener("click", function() {
+    dynamicText.textContent = "The text has been changed dynamically!";
 });
 
-// Add or remove an element when a button is clicked
-const addRemoveElementButton = document.getElementById('add-remove-element-btn');
-const contentSection = document.getElementById('content');
+// 2. Modifying CSS styles via JavaScript
+const toggleColorButton = document.getElementById("toggleColorButton");
+let isBackgroundRed = false;
 
-addRemoveElementButton.addEventListener('click', function() {
-    let newElement = document.createElement('p');
-    newElement.textContent = "A new element has been added!";
-    newElement.style.color = 'red';
-
-    if (contentSection.contains(newElement)) {
-        contentSection.removeChild(newElement);
+toggleColorButton.addEventListener("click", function() {
+    if (isBackgroundRed) {
+        document.body.style.backgroundColor = "white";
     } else {
-        contentSection.appendChild(newElement);
+        document.body.style.backgroundColor = "red";
     }
+    isBackgroundRed = !isBackgroundRed;
 });
+
+// 3. Adding or removing an element when a button is clicked
+const addElementButton = document.getElementById("addElementButton");
+const dynamicContainer = document.getElementById("dynamicContainer");
+
+addElementButton.addEventListener("click", function() {
+    const newElement = document.createElement("p");
+    newElement.textContent = "A new paragraph element was added!";
+    dynamicContainer.appendChild(newElement);
+});
+
+
+
+ 
+
+
 
 
 
